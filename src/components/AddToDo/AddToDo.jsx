@@ -5,10 +5,18 @@ const AddToDo = ({setTodo, todo}) =>
     const [value, setValue] = useState('') // value - значение, которое вводит пользователь. setValue - функция для изменения значения
 
 
+    let GetId = () => // генерация случайного id
+    {
+        return  Math.random().toString(36).substring(2,9);
+        // преобразование в базу 36
+        // взятие первых девяти символов
+    }
+
+
     let SaveList = () =>
     {
         setTodo([...todo, {
-            id: 4,
+            id: GetId(),
             title: value,
             isClosed: false
         }])

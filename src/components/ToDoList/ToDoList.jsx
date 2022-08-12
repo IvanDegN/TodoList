@@ -1,6 +1,9 @@
+import {useState} from "react";
 
 const ToDoList = ({setTodo, todo}) =>
 {
+    const [edit, setEdit] = useState(null)
+    const [value, setValue] = useState()
 
     let deleteTodo = (id) =>
     {
@@ -20,11 +23,52 @@ const ToDoList = ({setTodo, todo}) =>
         setTodo(newTodo); // обновление state
     }
 
+    let EditTodo = (id, title) =>
+    {
+        setEdit(id);
+        setValue(title) // передача текста задачи в поле для редактирования
+    }
+
+
+    let ChangeText = (id) => // изменение текста задачи
+    {
+        let newTodo = [...todo].map(item => {
+            if (item.id === id)
+            {
+                item.title = value;
+            }
+            return item
+        })
+        setTodo(newTodo) // обновить текст задачи
+        setEdit(null) // изменение флага на режим просмотра
+    }
+
     let ListItems = todo.map(item => (
         <div key={item.id}>
-            <div>{item.title}</div>
-            <button onClick={ ()=>deleteTodo(item.id) }>Удалить</button>
-            <button onClick={ ()=>ChangeStatusTodo(item.id)}>Закрыть / Открыть</button>
+            {
+                edit === item.id ? // если id выбранного элемента равно edit id, тогда вывести кнопку и поле для ввода иначе - вывести задачу
+                    <div>
+                        <input onChange={(e)=>setValue(e.target.value)} value={value}/>
+                    </div>
+                    :
+                    <div>{item.title}</div>
+
+            }
+
+            {
+                edit === item.id ? // если нажата кнопка "Изменить", тогда скрываются все кнопки, показывается кнопка "Сохранить"
+                    <div>
+                        <button onClick={ ()=> ChangeText(item.id)}>Сохранить</button>
+                    </div>
+                    :
+                    <div>
+                        <button onClick={ ()=>deleteTodo(item.id) }>Удалить</button>
+                        <button onClick={ ()=>EditTodo(item.id, item.title) }>Изменить</button>
+                        <button onClick={ ()=>ChangeStatusTodo(item.id)}>Закрыть / Открыть</button>
+                    </div>
+            }
+
+
         </div>
         )
     )
