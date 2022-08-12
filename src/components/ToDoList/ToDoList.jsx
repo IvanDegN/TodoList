@@ -8,16 +8,16 @@ const ToDoList = ({setTodo, todo}) =>
         setTodo(newTodo) // обновление state
     } // функция для удаления записи
 
-    let ChangeStatusTodo =(id) =>
+    let ChangeStatusTodo =(id) => // изменение статуса задачи
     {
-        let newTodo = [...todo].filter(item => {
+        let newTodo = [...todo].filter(item => { // создание копии массива и фильтрация. Если id равен выбранному, тогда изменить статус
             if(item.id === id)
             {
                 item.isClosed = !item.isClosed
             }
             return item
         })
-        setTodo(newTodo);
+        setTodo(newTodo); // обновление state
     }
 
     let ListItems = todo.map(item => (

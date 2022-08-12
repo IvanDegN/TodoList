@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div>
       <Header/> {/* подключение компонента Header */}
-        <AddToDo/>  {/* подключение компонета AddToDo */}
+        <AddToDo setTodo={setTodo} todo={todo}/>  {/* подключение компонета AddToDo */}
         <ToDoList todo={todo} setTodo={setTodo}/>  {/* подключение компонета ToDoList */}
     </div>
   );
