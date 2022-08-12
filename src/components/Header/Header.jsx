@@ -1,8 +1,10 @@
 
+import style from '../style/Header.module.css'
+
 const Header = () =>
 {
     return (
-        <div>Header</div>
+        <div className={style.header}>To do list</div>
     )
 }
 

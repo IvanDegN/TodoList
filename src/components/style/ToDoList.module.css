@@ -1,0 +1,31 @@
+
+.text
+{
+   display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+    color: gray;
+    font-weight: bold;
+}
+
+.closed
+{
+    color: green;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+.buttons
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-right:  40px;
+
+}
+
+.item
+{
+    padding-left: 10px;
+}

@@ -33,7 +33,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className={'App'}>
       <Header/> {/* подключение компонента Header */}
         <AddToDo setTodo={setTodo} todo={todo}/>  {/* подключение компонета AddToDo */}
         <ToDoList todo={todo} setTodo={setTodo}/>  {/* подключение компонета ToDoList */}

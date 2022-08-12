@@ -1,4 +1,6 @@
 import {useState} from "react";
+import style from '../style/ToDoList.module.css'
+
 
 const ToDoList = ({setTodo, todo}) =>
 {
@@ -51,7 +53,7 @@ const ToDoList = ({setTodo, todo}) =>
                         <input onChange={(e)=>setValue(e.target.value)} value={value}/>
                     </div>
                     :
-                    <div>{item.title}</div>
+                    <div className={ !item.isClosed ? style.closed : style.text}>{item.title}</div>
 
             }
 
@@ -61,10 +63,10 @@ const ToDoList = ({setTodo, todo}) =>
                         <button onClick={ ()=> ChangeText(item.id)}>Сохранить</button>
                     </div>
                     :
-                    <div>
-                        <button onClick={ ()=>deleteTodo(item.id) }>Удалить</button>
-                        <button onClick={ ()=>EditTodo(item.id, item.title) }>Изменить</button>
-                        <button onClick={ ()=>ChangeStatusTodo(item.id)}>Закрыть / Открыть</button>
+                    <div className={style.buttons}>
+                        <button className={item}   onClick={ ()=>deleteTodo(item.id) }>Удалить</button>
+                        <button className={item}  onClick={ ()=>EditTodo(item.id, item.title) }>Изменить</button>
+                        <button className={item}  onClick={ ()=>ChangeStatusTodo(item.id)}>Выполнена / Ожидает</button>
                     </div>
             }
 

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import style from '../style/AddToDo.module.css'
 
 const AddToDo = ({setTodo, todo}) =>
 {
@@ -25,8 +26,8 @@ const AddToDo = ({setTodo, todo}) =>
 
     return (
         <div>
-            <input placeholder={"Введите новую задачу"} value={value} onChange={ (e)=>setValue(e.target.value) }/>
-            <button onClick={SaveList}>Сохранить</button>
+            <input className={style.inpt} placeholder={"Введите новую задачу"} value={value} onChange={ (e)=>setValue(e.target.value) }/>
+            <button onClick={SaveList}>Добавить</button>
         </div>
     )
 }
